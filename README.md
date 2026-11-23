@@ -148,3 +148,33 @@ git push -u origin main
 3. Verifique que o README e o `docker-compose.yml` aparecem no repositorio publico e **que o arquivo `.env` nao foi enviado**. Entregue o link `https://github.com/SEU_USUARIO/shopbrasil-airflow-atividade01`.
 
 Se quiser executar o projeto na VPS depois da publicacao, faca `git clone` dentro de uma nova pasta em `/opt/labs-puc/orquestracao-workflows/` e siga os passos do Docker Compose. O projeto tem nome, volumes e porta de webserver proprios, para nao conflitar com o laboratorio anterior.
+
+
+## Evidências de execução
+
+O pipeline foi executado com sucesso no Apache Airflow, realizando a ingestão de produtos da FakeStore API, o processamento de métricas por categoria e a persistência dos resultados no PostgreSQL.
+
+### 01 — Pipeline executado com sucesso
+
+Visualização do fluxo de execução com os TaskGroups de ingestão e análise.
+
+![Graph View](docs/screenshots/01-graph-view.png)
+
+### 02 — Histórico da execução
+
+Execução das tarefas com status de sucesso no Apache Airflow.
+
+![Grid View](docs/screenshots/02-grid-view.png)
+
+### 03 — Resultados no PostgreSQL
+
+Métricas consolidadas por categoria, incluindo quantidade de produtos e preços médio, mínimo e máximo.
+
+![Resultados PostgreSQL](docs/screenshots/03-postgresql.png)
+
+### 04 — Validação de idempotência
+
+Verificação da ausência de registros duplicados por data e categoria após reexecução da etapa de persistência.
+
+![Teste de idempotência](docs/screenshots/04-idempotencia.png)
+
